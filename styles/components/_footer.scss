@@ -1,0 +1,57 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+.footer{
+    @include size(100%, null);
+    @include shadow(0px, -5px, 40px, 0px, rgba(0,0,0,0.2));
+    background-color: $ninth-color;
+    margin-top: 2.75em;
+    overflow: visible;
+    
+    
+
+    &__text{
+
+        &--title{
+            @include fontFamily($first-font, "Arial", sans-serif);
+            @include fontSize(1.625rem, 300);
+            color: $first-color;
+            padding-left: 0.654em;
+            padding-top: 1.375rem;
+
+            @include desktop(){
+                padding-left: 5.269em;
+                padding-top: 0.769em;
+                padding-bottom: 0.269em;
+            }
+        }
+        &--description{
+            @include fontFamily($second-font, "Arial", sans-serif);
+            @include fontSize(0.6875rem, 300);
+            padding-left: 1.545em;
+            color: $eighth-color;
+
+            @include desktop(){
+                padding-left: 12.455em;
+            }
+        }
+    }
+
+    &__rrss{
+        @include fontSize(1.625rem, 300);
+        @include position(relative, null, null, 1.615em, null);
+        text-align: right;
+        padding-right: 0.385em;
+        @include desktop(){
+            @include position(relative, null, null, 1.615em, null);
+            padding-right: 5.231em;
+        }
+        & img{
+            @include size(0.923em, null);
+            margin-right: 0.769em;  
+            
+        }
+
+    }
+}

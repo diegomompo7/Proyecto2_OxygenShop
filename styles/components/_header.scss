@@ -1,0 +1,99 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+.header {
+  @include shadow(0px, 3px, 8px, 0px, rgba(0, 0, 0, 0.29));
+  @include size(100%, 4.375em);
+
+  &__title {
+    @include fontSize(2rem, 300);
+    @include fontFamily($first-font, "Arial", sans-serif);
+    @include paddingExact(0.5313em, 0, 0, 0.781em);
+    color: $first-color;
+    @include desktop(){
+      padding-left: 4.250em;
+    }
+
+  } 
+  &__nav {
+    @include fontSize(0.6875rem, 700);
+    @include fontFamily($second-font, "Arial", sans-serif);
+    color: $second-color;
+    letter-spacing: 0.2982em;
+    & svg {
+      @include fontSize(2rem, 300);
+      @include position(relative, null, null, 2.094em, 86.6%);
+      @include size(0.625em, null);
+      fill: $sixth-color;
+      cursor: pointer;
+
+      @include desktop() {
+        display: none;
+      }
+    }
+
+    & svg:hover + &--mobile {
+      display: block;
+
+      @include desktop(){
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      @include size(100%, 15.96em);
+      @include shadow(0px, 4px, 4px, 0px, rgba(0, 0, 0, 0.29));
+      @include position(relative, null, null, 9em, null);
+      background-color: $seventh-color;
+      & li {
+        @include position(relative, 22.77%, null, null, 6.6%);
+        list-style: none;
+        margin-bottom: 1.2727em;
+
+      }
+
+      & a {
+        text-decoration: none;
+        color: $eighth-color;
+
+        &:hover{
+          color: $second-color;
+      }
+
+      }
+    }
+    &--desktop {
+      display: none;
+      @include position(relative, null, null, 2.455em, null);
+      padding-right: 7.4%;
+      @include desktop() {
+        display: flex;
+        justify-content: end;
+      }
+
+      & li {
+        list-style: none;
+        margin-left: 8.636em;
+        text-decoration: $eighth-color;
+        padding-bottom: 2.273em;
+
+        &:hover{
+            border-bottom: 4px solid $first-color;
+            color: $second-color;
+        }
+      }
+
+      & a {
+        text-decoration: none;
+        color: $eighth-color;
+
+        &:hover{
+          color: $second-color;
+      }
+      }
+    }
+  }
+}
+

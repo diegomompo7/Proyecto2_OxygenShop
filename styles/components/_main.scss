@@ -1,0 +1,66 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+.main {
+  &__container {
+    @include margin(0, auto);
+    @include size(82.6%, null);
+    @include min440(){
+      @include size(100%, null);
+      max-width: 27.5em;
+    }
+
+    &--title {
+      @include fontFamily($first-font, "Arial", sans-serif);
+      @include fontSize(2.1875rem, 400);
+      margin-top: 2.8571em;
+      padding-bottom: 0.5714em;
+      text-align: center;
+
+      @include desktop(){
+        @include fontSize(3.0625rem, 400);
+        margin-top: 2.653em;
+      }
+    }
+    &--subtitle {
+      @include fontFamily($second-font, "Arial", sans-serif);
+      @include fontSize(1rem, 400);
+      padding-bottom: 2.75em;
+      text-align: center;
+    }
+    &--button {
+      @include size(100%, null);
+      @include padding(1.375em, 0);
+      @include shadow(5px, 10px, 14px, 0px, rgba(7, 172, 230, 0.29));
+      @include fontFamily($second-font, "Arial", sans-serif);
+      @include fontSize(1rem, 700);
+      background-color: $first-color;
+      color: $seventh-color;
+      border-radius: 2.5rem;
+      border-style: none;
+    }
+  }
+  &__img {
+      font-size: 0.875rem;
+      margin-top: 1.57em;
+
+      @include desktop(){
+        object-position: 100%;
+        @include size(null, 100%);
+      }
+
+    & img {
+      @include paddingExact(2em, 0, 0, 0);
+      @include size(100%, 20.625em);
+      object-fit: cover;
+      object-position: center;
+
+      @include desktop(){
+        @include paddingExact(0, 0, 0, 0);
+        object-position: 100%;
+        @include size(null, 100%);
+      }
+    }
+  }
+}

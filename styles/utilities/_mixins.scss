@@ -1,0 +1,25 @@
+@mixin min372() {
+  @media screen and (min-width: 23.25rem){
+    @content;
+  }
+}
+@mixin min375() {
+  @media screen and (min-width: 23.4375rem) and (max-width: 999px) {
+    @content;
+  }
+}
+@mixin min405() {
+  @media screen and (min-width: 25.3125rem) {
+    @content;
+  }
+}
+@mixin min440() {
+  @media screen and (min-width: 27.5rem){
+    @content;
+  }
+}
+@mixin desktop() {
+  @media screen and (min-width: 62.5rem){
+    @content;
+  }
+}

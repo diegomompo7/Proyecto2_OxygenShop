@@ -1,0 +1,264 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+
+.prices {
+  &__title {
+    @include fontFamily($first-font, "Arial", sans-serif);
+    @include fontSize(2.25rem, 400);
+    @include marginExact(1.5em, 0, 0.38em, 0);
+    text-align: center;
+
+    @include desktop() {
+      margin-top: 3.528em;
+      @include marginExact(1.5em, 0, 0, 0);
+    }
+  }
+  &__plans {
+    @include desktop() {
+      display: flex;
+      @include marginExact(0, 11.250em, 0, 11.250em);
+    }
+
+    &--items {
+      @include size(78.1%, 15.6875em);
+      @include margin(0, auto);
+      border-radius: 1.125rem;
+      overflow: visible;
+      margin-bottom: 3.5em;
+
+      @include min440() {
+        max-width: 23.25rem;
+      }
+
+      @include desktop() {
+        @include size(29.3%, 485px);
+        margin-top: 3.875em;
+      }
+
+      &:hover {
+        @include size(90.3%, 17.3125em);
+
+        .prices__plans--items--features--list {
+          margin-top: 3.643em;
+        }
+        .prices__plans--items--cost--title {
+          padding-top: 4.55em;
+        }
+        .prices__plans--items--button {
+          margin-left: 27.7%;
+        }
+        @include min405() {
+          max-width: 25.3125rem;
+          @include size(100%, null);
+        }
+        @include desktop() {
+          @include size(31.9%, 524px);
+          margin-top: 2.188em;
+          .features__basic {
+            margin-top: 0;
+            padding-bottom: 1.714em;
+          }
+          .features__professional, .features__premium {
+            margin-top: 0;
+            padding-bottom: 1.286em;
+          }
+          .prices__plans--items--features--list li {
+            padding-bottom: 1.786em;
+          }
+          .prices__plans--items--cost--title {
+            @include fontSize(1.3125rem, 700);
+            @include paddingExact(1.619em, 0, 0.667em, 0);
+          }
+          .prices__plans--items--button {
+            @include margin(0, auto)
+          }
+        }
+      }
+
+      &--cost {
+        @include size(48%, null);
+        @include margin(0, auto);
+        float: left;
+        text-align: center;
+        & h3 {
+          @include fontFamily($first-font, "Arial", sans-serif);
+          @include fontSize(1.25rem, 700);
+          padding-top: 3.5em;
+          @include desktop() {
+            @include paddingExact(1.7em, 0, 0.7em, 0);
+          }
+        }
+        & h1 {
+          @include fontFamily($second-font, "Arial", sans-serif);
+          @include fontSize(2.875rem, 300);
+        }
+        & p {
+          @include fontFamily($first-font, "Arial", sans-serif);
+          @include fontSize(0.72rem, 700);
+        }
+
+        @include desktop() {
+          @include size(100%, null);
+        }
+      }
+      &--features {
+        @include size(52%, null);
+        float: left;
+
+        @include desktop() {
+          text-align: center;
+          width: 100%;
+        }
+
+        & ul {
+          @include fontSize(0.875rem, 400);
+          margin-top: 1.786em;
+        }
+
+        & li {
+          @include fontFamily($second-font, "Arial", sans-serif);
+          padding-bottom: 1.429em;
+          list-style: none;
+        }
+      }
+
+      & button {
+        @include fontFamily($second-font, "Arial", sans-serif);
+        @include fontSize(0.8125rem, 600);
+        @include padding(1.231em, 4.385em);
+        position: relative;
+        margin-left: 24.2%;
+
+        @include desktop() {
+          @include margin(0, auto);
+          display: block;
+        }
+
+        color: $seventh-color;
+        border-radius: 1.475rem;
+        cursor: pointer;
+        border-style: none;
+      }
+    }
+  }
+}
+.basic {
+  border: 1px solid $fifth-color;
+
+  &:hover {
+    @include shadow(5px, 10px, 27px, 0px, rgba(235, 71, 110, 0.29));
+  }
+
+  &:hover {
+    .basic__button {
+      @include shadow(5px, 10px, 14px, 0px, rgba(235, 71, 110, 0.29));
+    }
+  }
+
+  &:hover {
+    .basic__cost {
+      @include desktop() {
+        padding-bottom: 1.3em;
+      }
+    }
+  }
+
+  & h1 {
+    color: $fifth-color;
+    @include desktop() {
+      margin-bottom: 1.3em;
+    }
+  }
+  & ul {
+    @include desktop() {
+      padding-bottom: 3.071em;
+    }
+  }
+  & button {
+    background-color: $fifth-color;
+  }
+}
+
+.professional {
+  border: 1px solid $sixth-color;
+
+  &:hover {
+    @include shadow(5px, 10px, 27px, 0px, rgba(7, 172, 230, 0.29));
+  }
+
+  &:hover {
+    .professional__button {
+      @include shadow(5px, 10px, 14px, 0px, rgba(7, 172, 230, 0.29));
+    }
+  }
+
+  &:hover {
+    .professional__description {
+      @include desktop() {
+        padding-bottom: 5.083em;
+      }
+    }
+  }
+
+  & h1 {
+    color: $sixth-color;
+    @include desktop() {
+      margin-bottom: 0.109em;
+    }
+  }
+  & p {
+    @include desktop() {
+      margin-bottom: 4.167em;
+    }
+  }
+  & ul {
+    @include desktop() {
+      padding-bottom: 2.643em;
+    }
+  }
+  & button {
+    background-color: $sixth-color;
+  }
+}
+.premium {
+  border: 1px solid $fourth-color;
+
+  &:hover {
+    @include shadow(5px, 10px, 27px, 0px, rgba(85, 223, 180, 0.29));
+  }
+
+  &:hover {
+    .premium__button {
+      @include shadow(5px, 10px, 14px, 0px, rgba(85, 223, 180, 0.29));
+    }
+  }
+
+  &:hover {
+    .premium__description {
+      @include desktop() {
+        padding-bottom: 5.083em;
+      }
+    }
+  }
+
+  & h1 {
+    color: $fourth-color;
+    @include desktop() {
+      margin-bottom: 0.109em;
+    }
+  }
+  & p {
+    @include desktop() {
+      margin-bottom: 4.167em;
+    }
+  }
+  & ul {
+    @include desktop() {
+      padding-bottom: 2.643em;
+    }
+  }
+
+  &__button {
+    background-color: $fourth-color;
+  }
+}

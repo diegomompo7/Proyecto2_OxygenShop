@@ -1,0 +1,33 @@
+@mixin shadow($hor, $ver, $blur, $spread, $color) {
+    box-shadow: $hor $ver $blur $spread $color;
+}
+@mixin margin($row, $column) {
+    margin: $row $column;
+}
+@mixin marginExact($top, $right, $bottom, $left) {
+    margin: $top $right $bottom $left;
+}
+@mixin padding($row, $column) {
+    padding: $row $column;
+}
+@mixin paddingExact($top, $right, $bottom, $left) {
+    padding: $top $right $bottom $left;
+}
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+@mixin fontFamily($firstFont, $secondFont, $thirdFont){
+    font-family: $firstFont, $secondFont, $thirdFont;
+}
+@mixin fontSize($size, $weight) {
+    font-size: $size;
+    font-weight: $weight;
+}
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}

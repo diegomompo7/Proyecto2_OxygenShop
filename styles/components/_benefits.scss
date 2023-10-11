@@ -1,0 +1,272 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+.benefits {
+  background-color: $ninth-color;
+  @include paddingExact(3.5em, 0, 6.25em, 0);
+
+  @include desktop{
+    padding-top: 6.6875em
+  }
+
+
+  &__container {
+    @include margin(0, auto);
+    @include size(83.4%, null);
+    background-color: $seventh-color;
+    @include min440() {
+      max-width: 23.4375em;
+      @include size(100%, null);
+    }
+
+    @include desktop() {
+      @include size(100%, 23.125em);
+      max-width: 70.25em;
+      display: flex;
+      justify-content: start;
+      margin-bottom: 2.3125em;
+    }
+
+    &--text {
+      @include desktop(){
+        width: 416px;
+      }
+
+      & h1 {
+        @include size(87.2%, null);
+        @include fontFamily($first-font, "Arial", sans-serif);
+        @include fontSize(1.875rem, 400);
+        margin-left: 0.73em;
+        @include desktop() {
+          @include fontSize(2.25rem, 400);
+          @include size(auto, null);
+          margin-left: 0;
+        }
+      }
+
+      & p {
+        @include size(86.6%, null);
+        @include fontFamily($second-font, "Arial", sans-serif);
+        margin-left: 1.5em;
+        
+        @include desktop() {
+          @include size(100%, null);
+          margin-left: 0;
+        }
+      }
+      & hr{
+        visibility: hidden;
+        margin-bottom: 2.14em;
+
+
+        @include desktop(){
+          @include size(20.4375em, null);
+          visibility: visible;
+          border: 2px solid;
+        }
+      }
+    }
+
+    &--macbook {
+      @include size(16.875em, 9.18em);
+
+      @include desktop(){
+        @include fontSize(1rem, 400);
+        @include size(57%, null);
+        padding-left: 9em;
+        
+      }
+      
+
+      &--img {
+        @include size(12em, null);
+        @include position(relative, null, 1em, 4.5em, null);
+
+        @include desktop() {
+          @include size(24.1875em, null);
+          @include position(block, null, null, 7em, null);
+      
+        }
+      }
+      &--rectanguleRed {
+        @include size(5.625em, null);
+        position: block;
+        @include marginExact(6%, 0, 0, 62%);
+
+        @include desktop() {
+          display: none;
+        }
+      }
+      &--rectanguleRed2 {
+        visibility: hidden;
+        @include size(4.375em, null);
+        z-index: 0;
+
+        @include desktop() {
+          visibility: visible;
+          @include position(relative, 4em, null, null, 12em);
+          @include size(14.063em, null);
+        }
+      }
+    }
+    &--phone {
+      @include size(15.5625em, 8.125em);
+
+      @include desktop(){
+        @include fontSize(1rem, 400);
+        @include size(50%, 8.125em);
+        margin-right: 130px;
+ 
+      }
+
+      &--img {
+        @include size(10.9375em, null);
+        @include position(relative, null, null, 8em, 5.6em);
+        z-index: 1;
+
+        @include desktop() {
+          @include size(26.625em, null);
+          @include position(relative, null, null, 19em, 4.6em);
+        
+        }
+      }
+      &--circleBlue {
+        @include size(8.18755em, null);
+        position: block;
+        @include marginExact(2%, 0, 0, 36%);
+        z-index: 0;
+
+        @include desktop() {
+          @include size(20em, null);
+          margin-left: 4.375em;
+          
+        }
+      }
+    }
+    
+    &--trumpet{
+        @include size(null, 12.18175em);
+        background-color: $fourth-color;
+        border-radius: 5px;
+
+        @include desktop(){
+          @include fontSize(1rem, 400);
+            float: left;
+            @include size(39.1%, 100%);
+        }
+
+        &--img{
+            @include size(18.43em, null);
+            @include position(relative, 1.525em, null, null, null);
+            position: relative;
+            z-index: 1;
+
+            @include desktop(){
+                @include size(60.2%, null);
+                padding-top:  6.125em;
+                margin-left: 3.875em;
+            }
+        }    
+    }
+    &--trumpet--limit{
+      visibility: hidden;
+      margin-right: 3.8125em;
+    }
+  }
+}
+.macbook {
+  flex-direction: row-reverse;
+  @include desktop() {
+    padding-left: 2.1875em;
+  }
+
+  & h1 {
+    padding-top: 0.93em;
+    @include desktop() {
+      padding-top: 2.528em;
+    }
+  }
+  & p {
+    @include fontSize(0.875rem, 400);
+    margin-top: 3.35em;
+    padding-bottom: 2.14em;
+    @include desktop() {
+      @include fontSize(1rem, 400);
+      margin-top: 1.5em;
+      margin-bottom: 0;
+      padding-bottom: 3.125em;
+      
+    }
+  }
+  & hr {
+    @include desktop(){
+      border-color: $third-color;
+    }
+  }
+}
+
+.phone {
+
+  & h1 {
+    padding-top: 0.9em;
+    @include desktop() {
+    padding-top: 1.917em;
+    width: 61.5%
+    }
+  }
+  & p {
+    @include fontSize(0.875rem, 400);
+    margin-top: 1.28em;
+    padding-bottom: 2.14em;
+    @include desktop() {
+      @include fontSize(1rem, 400);
+      margin-top: 1.5em;
+      margin-bottom: 0;
+      padding-bottom: 3.125em;
+      
+    }
+  }
+  & hr {
+    @include desktop(){
+      border-color: $first-color;
+    }
+  }
+}
+.trumpet--desktop{
+  @include desktop(){
+    background-color: $ninth-color;
+
+  }
+}
+.trumpet {
+  @include desktop() {
+    padding-left: 2.1875rem;
+    @include size(55.4%, 100%);
+    background-color: $seventh-color;
+    float: left;
+  }
+
+  & h1 {
+    padding-top: 1.03em;
+    @include desktop() {
+      @include size(58.8%, null);
+      padding-top: 1.917em;
+    }
+  }
+
+  & p {
+    @include fontSize(1rem, 400);
+    margin-top: 1.25em;
+    padding-bottom: 1.06em;
+    @include desktop(){
+      @include size(73.5%, null);
+      padding-bottom: 3.125em;
+    }
+  }
+  & hr {
+    @include desktop(){
+      border-color: $fourth-color;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+
+.sales {
+  @include size(82.6%, null);
+  @include margin(0, auto);
+  @include desktop(){
+    max-width: 67.25em;
+    @include size(100%, null);
+  }
+
+  &__title {
+    @include fontFamily($first-font, "Arial", sans-serif);
+    @include fontSize(1.875rem, 300);
+    margin-top: 0.43em;
+    padding-bottom: 1.1em;
+    text-align: center;
+    @include desktop(){
+      @include fontSize(2.25rem, 400);
+      padding-bottom: 2.861em;
+      
+    }
+  }
+  &__list {
+
+    @include desktop(){
+      display: flex;
+      justify-content: center;
+      margin-left: 2.5em;
+    }
+
+    &--item {
+      @include margin(0, auto);
+      text-align: center;
+      & h3 {
+        @include fontFamily($first-font, "Arial", sans-serif);
+        @include fontSize(1.25rem, 800);
+        margin-top: 0.65em;
+        letter-spacing: 0.298rem;
+      }
+      & p {
+        @include fontFamily($first-font, "Arial", sans-serif);
+        @include marginExact(1.17em, 0, 1.47em, 0);
+        color: $eighth-color;
+        @include desktop(){
+          padding-bottom: 8.250em;
+        }
+      }
+    }
+  }
+}
+.item__img {
+  @include size(100%, 4.375em);
+
+  &--circle {
+    @include size(null, 3.9375em);
+    @include margin(0,auto);
+    display: block;
+  }
+
+  &--person {
+    @include size(2.75em, null);
+    @include position(relative, null, null, 83%, 20%);
+  }
+  &--eye {
+    @include size(4.0625em, null);
+    @include position(relative, null, null, 70%, 10%);
+  }
+  &--catalog {
+    @include size(3.25em, null);
+    @include position(relative, null, null, 80%, 15%);
+  }
+}
+.person{
+  @include size(7.31em, null);
+  & p{
+    @include size(90.7%, null);
+    @include fontSize(1.0625rem, 400);
+    padding-left: 0.65em;
+  }
+}
+.eye{
+  @include size(11em, null);
+  & h3{
+    @include size(88.6%, null);
+    padding-left: 1em;
+  }
+  & p{
+    @include size(82.3%, null);
+    @include fontSize(1rem, 400);
+    padding-left: 2.06em;
+  }
+}
+.catalog{
+  @include size(10.18em, null);
+  & h3{
+    @include size(79.7%, null);
+    padding-left: 1.6em;
+  }
+  & p{
+    @include size(81.5%, null);
+    @include fontSize(1.0625rem, 400);
+    padding-left: 1.94em;
+    margin-bottom: 2.94em;
+  }
+}
+
+
