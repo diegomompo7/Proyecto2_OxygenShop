@@ -34,8 +34,6 @@
     }
 
     & svg:hover + &--mobile {
-      display: block;
-
       @include desktop(){
         display: none;
       }

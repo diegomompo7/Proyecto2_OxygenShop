@@ -101,9 +101,6 @@ body {
     display: none;
   }
 }
-.header__nav svg:hover + .header__nav--mobile {
-  display: block;
-}
 @media screen and (min-width: 62.5rem) {
   .header__nav svg:hover + .header__nav--mobile {
     display: none;
