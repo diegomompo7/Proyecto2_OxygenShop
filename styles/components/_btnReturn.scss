@@ -1,0 +1,19 @@
+@import "../utilities/variables";
+@import "../utilities/functions";
+@import "../utilities/mixins";
+
+.btn {
+   display: flex;
+   justify-content: center;
+   margin-top: 3.125em;
+
+    &__return {
+    @include fontSize(1rem, 700);
+    background-color: $first-color;
+    color: $seventh-color;
+    border-radius: 2.5rem;
+    border-style: none;
+    @include padding(1.375em, 1.875em);
+    @include shadow(5px, 10px, 14px, 0px, rgba(7, 172, 230, 0.29));
+    }   
+}

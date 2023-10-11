@@ -1120,4 +1120,20 @@ body {
 .footer__rrss img {
   width: 0.923em;
   margin-right: 0.769em;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.125em;
+}
+.btn__return {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #08A6E4;
+  color: #FFFFFF;
+  border-radius: 2.5rem;
+  border-style: none;
+  padding: 1.375em 1.875em;
+  box-shadow: 5px 10px 14px 0px rgba(7, 172, 230, 0.29);
 }/*# sourceMappingURL=style.css.map */
