@@ -115,8 +115,31 @@ const validForm = () => {
     })
 
     console.log(checkVal)
+    let isValid = checkVal.every((check) => check === false)
 
-    return checkVal.every((check) => check === false)
+    return isValid
+}
+
+// SEND DATE TO SERVER
+
+const sendDateServer = () => {
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: nameInput.value,
+            email: emailInput.value,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        },
+    })
+    .then((response) => response.json())
+    .then((json) => (
+        alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`,
+        console.log(json)
+    )))
+
 }
 
 sendButton.onclick = (e) => {
@@ -124,9 +147,12 @@ sendButton.onclick = (e) => {
 
     if (validForm()) {
         console.log(false)
-        alert(`Send form contact success with the name ${nameInput.value} and email ${emailInput.value}`)
+        sendDateServer()
+    
     } else {
         e.preventDefault()
         console.log(true)
     }
 }
+
+//--------------------------------------------------------------------------------------------------------
