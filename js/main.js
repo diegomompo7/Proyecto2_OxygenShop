@@ -74,39 +74,54 @@ const nameInput = document.querySelector(".contact__form--name--input")
 const emailInput = document.querySelector(".contact__form--email--input")
 const checkboxInput = document.querySelector(".contact__form--checkbox")
 const sendButton = document.querySelector(".contact__form--send")
+let checkInvalid;
 
 let saveForm = []
 const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 const validForm = () => {
 
-    if(nameInput.value === '') {
+    if (nameInput.value === '') {
         nameInput.classList.add("invalid")
         alert("The name is invalid: It must be complete")
-    } else if(nameInput.value.length < 2 || nameInput.value.length > 100){
+    } else if (nameInput.value.length < 2 || nameInput.value.length > 100) {
         nameInput.classList.add("invalid")
         alert("The name is invalid: It must be contain between 2 and 100 caracthers")
     }
-    else{
+    else {
         nameInput.classList.remove("invalid")
+        console.log("correct")
     }
 
-    if( emailInput.value === '') {
+    if (emailInput.value === '') {
         emailInput.classList.add("invalid")
         alert("The email is invalid: It must be complete")
-    } else if(!emailInput.value.match(validateEmail)){
+    } else if (!emailInput.value.match(validateEmail)) {
         emailInput.classList.add("invalid")
         alert("The email is invalid: It must an email valid")
     }
-    else{
-        nameInput.classList.remove("invalid")
-
+    else {
+        emailInput.classList.remove("invalid")
+        console.log("correct")
     }
 
-    return !!(nameInput.classList.contains("invalid") && emailInput.classList.contains("invalid"));
+
+    if(!nameInput.classList.contains("invalid") && !emailInput.classList.contains("invalid")){
+        checkInvalid = false;
+    }else{
+        checkInvalid = true
+    };
+
+    return checkInvalid
 }
 
-sendButton.onclick = () => {
-    console.log(validForm())
+sendButton.onclick = (e) => {
+
+    if (!validForm()) {
+        alert(`Send form contact success with the name ${nameInput.value} and email ${emailInput.value}`)
+    } else{
+        e.preventDefault() 
+        console.log(true)
+    }
 }
 console.log(saveForm)
