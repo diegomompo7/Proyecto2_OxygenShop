@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/main.js" defer></script>
+    <script src="sweetalert2.all.min.js"></script>
     <link
       rel="stylesheet"
       href="https://i.icomoon.io/public/temp/c2bc2fbfd9/UntitledProject/style.css"
@@ -298,7 +299,7 @@
         <p class="contact__form--name">NAME</p>
         <input class="contact__form--name--input" type="text" />
         <p class="contact__form--email">EMAIL</p>
-        <input class="contact__form--email--input" type="text" />
+        <input class="contact__form--email--input" type="email" />
         <br />
         <input class="contact__form--checkbox" type="checkbox" id="conditions">
         <label class="contact__form--conditions" for="conditions">
@@ -310,7 +311,7 @@
           and repealing Directive 95/46/EC (Data Protection Directive)
       </label>
         <br />
-        <button class="contact__form--send">Send</button>
+        <button type="button" class="contact__form--send">Send</button>
       </form>
     </section>
     <footer class="footer">
