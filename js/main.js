@@ -27,19 +27,45 @@ menuOpen()
 
 // ------------------------------------------------------------------------------------------
 
-// SCROLLBAR
-
+// SCROLLBAR AND NEWSLETTER
 
 const scroll = document.createElement("hr")
 scroll.setAttribute('style', 'border: 3px solid red; position:fixed')
 
 
+const news = document.createElement("modal")
+news.classList.add("newsletterModal")
+const pModal = document.createElement("p")
+const btnSusbribe = document.createElement("button")
+btnSusbribe.classList.add("btnSuscribe")
+
+btnSusbribe.textContent = "Suscribe"
+
+pModal.textContent = "Subscribe to our newsletter"
+
+
 document.onscroll = () => {
     height = window.scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
     scroll.width = `${height * 100}%`
+    console.log(height)
+
+    if(Math.round(height*100) === 25){
+        news.style.visibility = "visible";
+    }
+
 }
+setTimeout(() => {
+    news.style.visibility = "visible";
+    news.style.opacity = "1"
+    news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+    console.log("hola")
+   }, "5000");
 
 document.body.insertBefore(scroll, document.querySelector(".header"))
+document.body.insertBefore(news, document.querySelector(".header"))
+news.append(pModal)
+news.append(btnSusbribe)
+
 
 //-------------------------------------------------------------------------------------------------
 
