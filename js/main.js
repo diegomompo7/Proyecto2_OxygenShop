@@ -49,17 +49,37 @@ document.onscroll = () => {
     scroll.width = `${height * 100}%`
     console.log(height)
 
-    if(Math.round(height*100) === 25){
+    if(Math.round(height*100) === 25 && !localStorage.getItem("Closed")){
         news.style.visibility = "visible";
+        news.style.opacity = "1"
+        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
     }
 
 }
 setTimeout(() => {
+    if(!localStorage.getItem("Closed")){
     news.style.visibility = "visible";
     news.style.opacity = "1"
     news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+    }
     console.log("hola")
    }, "5000");
+
+
+   document.onkeydown = (event) => {
+        if(event.key === 'Escape'){
+            news.style.visibility = "hidden";
+            news.style.opacity = "0"
+            news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+            localStorage.setItem('Closed', 'true')
+        }
+   }
+   document.body.onclick = () => {
+        news.style.visibility = "hidden";
+        news.style.opacity = "0"
+        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+        localStorage.setItem('Closed', 'true')
+    }
 
 document.body.insertBefore(scroll, document.querySelector(".header"))
 document.body.insertBefore(news, document.querySelector(".header"))
