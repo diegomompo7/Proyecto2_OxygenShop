@@ -76,52 +76,57 @@ const checkboxInput = document.querySelector(".contact__form--checkbox")
 const sendButton = document.querySelector(".contact__form--send")
 let checkInvalid;
 
-let saveForm = []
 const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+const inputToVal = [nameInput, emailInput, checkboxInput]
+const inputMsgVal = ['name', 'email', 'checkbox']
+
+const validationEvery = (input, inputMsg) => [
+    [input.value === '', `The ${inputMsg} is invalid: It must be complete`],
+    [input.value.length < 2 || input.value.length > 100, `The ${inputMsg} is invalid: It must be contain between 2 and 100 caracthers`],
+    [!input.value.match(validateEmail), `The ${inputMsg} is invalid: It must an email valid`],
+    [!input.checked, `The ${inputMsg} is invalid: It must be cheked`]
+]
 
 const validForm = () => {
 
-    if (nameInput.value === '') {
-        nameInput.classList.add("invalid")
-        alert("The name is invalid: It must be complete")
-    } else if (nameInput.value.length < 2 || nameInput.value.length > 100) {
-        nameInput.classList.add("invalid")
-        alert("The name is invalid: It must be contain between 2 and 100 caracthers")
-    }
-    else {
-        nameInput.classList.remove("invalid")
-        console.log("correct")
-    }
+    const checkVal = inputToVal.map((input, i) => {
 
-    if (emailInput.value === '') {
-        emailInput.classList.add("invalid")
-        alert("The email is invalid: It must be complete")
-    } else if (!emailInput.value.match(validateEmail)) {
-        emailInput.classList.add("invalid")
-        alert("The email is invalid: It must an email valid")
-    }
-    else {
-        emailInput.classList.remove("invalid")
-        console.log("correct")
-    }
+        for(let j=1; j<validationEvery.length; j++){
 
+            if (validationEvery(input) [0][0]) {
+                input.classList.add("invalid")
+                alert(validationEvery(input, inputMsgVal[i]) [0][1])
+                return true;
+            } else{
+                input.classList.remove("invalid")
 
-    if(!nameInput.classList.contains("invalid") && !emailInput.classList.contains("invalid")){
-        checkInvalid = false;
-    }else{
-        checkInvalid = true
-    };
+                if(validationEvery(input)[i+1][0]){
+                    input.classList.add("invalid")
+                    alert(validationEvery(input, inputMsgVal[i])[i+1][1])
+                    return true
+                } else{
+                    input.classList.remove("invalid")
+                    return false
+                }
+            }
+        }
+        
+    })
 
-    return checkInvalid
+    console.log(checkVal)
+
+    return checkVal.every((check) => check === false)
 }
 
 sendButton.onclick = (e) => {
+    e.preventDefault()
 
-    if (!validForm()) {
+    if (validForm()) {
+        console.log(false)
         alert(`Send form contact success with the name ${nameInput.value} and email ${emailInput.value}`)
-    } else{
-        e.preventDefault() 
+    } else {
+        e.preventDefault()
         console.log(true)
     }
 }
-console.log(saveForm)
