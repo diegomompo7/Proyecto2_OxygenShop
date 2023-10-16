@@ -40,3 +40,13 @@
     border-radius: 2.5rem;
     border-style: none;
 }
+.btnClosed {
+    position: fixed;
+    top: 35%;
+    right: 20%;
+    @include fontFamily($second-font, "Arial", sans-serif);
+    @include fontSize(2rem, 700);
+    color: $seventh-color;
+    background-color: $first-color;
+    border-style: none;
+}

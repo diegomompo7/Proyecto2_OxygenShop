@@ -13,10 +13,44 @@
       @include marginExact(1.5em, 0, 0, 0);
     }
   }
+  &__titleSelector {
+    @include fontFamily($first-font, "Arial", sans-serif);
+    @include fontSize(1.5rem, 400);
+    @include marginExact(2.25em, 0, 1.5em, 0);
+    text-align: center;
+
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.813em;
+
+    &--selector {
+      width: 15.625em;
+      margin-bottom: 2em;
+      font-size: 1.25em;
+      
+    }
+    &--btnSelector {
+
+      @include padding(1em, 6em);
+      @include shadow(5px, 10px, 14px, 0px, rgba(7, 172, 230, 0.29));
+      @include fontFamily($second-font, "Arial", sans-serif);
+      @include fontSize(1rem, 700);
+      background-color: $first-color;
+      color: $seventh-color;
+      border-radius: 2.5rem;
+      margin-bottom: 15px;
+      border-style: none;
+
+    }
+  }
   &__plans {
     @include desktop() {
       display: flex;
-      @include marginExact(0, 11.250em, 0, 11.250em);
+      @include marginExact(0, 11.25em, 0, 11.25em);
     }
 
     &--items {
@@ -58,7 +92,8 @@
             margin-top: 0;
             padding-bottom: 1.714em;
           }
-          .features__professional, .features__premium {
+          .features__professional,
+          .features__premium {
             margin-top: 0;
             padding-bottom: 1.286em;
           }
@@ -70,7 +105,7 @@
             @include paddingExact(1.619em, 0, 0.667em, 0);
           }
           .prices__plans--items--button {
-            @include margin(0, auto)
+            @include margin(0, auto);
           }
         }
       }
