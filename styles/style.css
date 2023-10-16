@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Raleway";
   font-style: normal;
@@ -1228,4 +1229,48 @@ body {
   color: #FFFFFF;
   background-color: #08A6E4;
   border-style: none;
+}
+
+#slider {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #000000;
+  max-width: 586px;
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 10px;
+}
+
+#slider img {
+  display: none;
+}
+
+.btnSlider {
+  display: flex;
+  position: absolute;
+  bottom: 45%;
+  right: 2%;
+  left: 2%;
+  justify-content: space-between;
+}
+.btnSlider button {
+  background-color: #000000;
+  color: #A5A5A5;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 30px;
+  border: 3px solid #A5A5A5;
+}
+
+.divCircle {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.divCircle div {
+  width: 10px;
+  height: 10px;
+  background-color: #A5A5A5;
+  border-radius: 50%; /* Hace que el elemento sea un círculo */
+  margin: 0 10px; /* Centra el círculo horizontalmente */
 }/*# sourceMappingURL=style.css.map */

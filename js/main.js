@@ -254,7 +254,7 @@ btnSelector.classList.add("prices__container--btnSelector")
 pSelector.textContent = "Currency to Converter"
 btnSelector.textContent = "Convert"
 
-for(let i=0; i<currSelector.length; i++){
+for (let i = 0; i < currSelector.length; i++) {
     const option = document.createElement("option")
     option.textContent = currSelector[i][1]
     selector.append(option)
@@ -268,7 +268,7 @@ divSelect.append(btnSelector)
 const currConverted = (data, currConvertArr) => {
     currCurrencyConverted.push(currConvertArr[0][2])
 
-    for(let i=1; i<currCurrencyArr.length; i++){
+    for (let i = 1; i < currCurrencyArr.length; i++) {
         currCurrencyConverted.push((currCurrencyArr[i] * data[currConvertArr[0][0]].toFixed(2)).toFixed(0))
     }
 
@@ -278,7 +278,7 @@ const currConverted = (data, currConvertArr) => {
 
     currCurrencyArr = currCurrencyConverted
     currCurrencyConverted = []
-   
+
 
 }
 
@@ -292,11 +292,11 @@ btnSelector.onclick = () => {
 
     console.log(currConvert)
 
-    fetch(urlConverter + currConvert[1][0] + "/" +  currConvert[0][0] + ".json")
-    .then(response => response.json())
-    .then(json => {
-        currConverted(json, currConvert)
-    })
+    fetch(urlConverter + currConvert[1][0] + "/" + currConvert[0][0] + ".json")
+        .then(response => response.json())
+        .then(json => {
+            currConverted(json, currConvert)
+        })
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------ç
@@ -305,14 +305,39 @@ btnSelector.onclick = () => {
 
 const divSlider = document.createElement("div")
 divSlider.id = "slider"
-divSlider.style.backgroundColor = "cyan"
-divSlider.textContent = "1"
+
+
+const divBtn = document.createElement("div")
+divBtn.classList.add("btnSlider")
+
+const btnPrevious = document.createElement("button")
+btnPrevious.classList.add("btnPrevious")
+btnPrevious.textContent = "<"
+
+const btnNext = document.createElement("button")
+btnNext.classList.add("btnNext")
+btnNext.textContent = ">"
 
 const img1 = document.createElement("img")
 const img2 = document.createElement("img")
 const img3 = document.createElement("img")
 const img4 = document.createElement("img")
 const img5 = document.createElement("img")
+
+const divCircle = document.createElement("div")
+const divC1 = document.createElement("div")
+const divC2 = document.createElement("div")
+const divC3 = document.createElement("div")
+const divC4 = document.createElement("div")
+const divC5 = document.createElement("div")
+
+divC1.classList.add("circle")
+divC2.classList.add("circle")
+divC3.classList.add("circle")
+divC4.classList.add("circle")
+divC5.classList.add("circle")
+
+divCircle.classList.add("divCircle")
 
 img1.setAttribute("src", "../assets/img/image1.jpg")
 img2.setAttribute("src", "../assets/img/image2.jpg")
@@ -326,30 +351,69 @@ divSlider.append(img2)
 divSlider.append(img3)
 divSlider.append(img4)
 divSlider.append(img5)
+divSlider.appendChild(divBtn)
+divBtn.append(btnPrevious)
+divBtn.append(btnNext)
+divSlider.append(divCircle)
+divCircle.append(divC1)
+divCircle.append(divC2)
+divCircle.append(divC3)
+divCircle.append(divC4)
+divCircle.append(divC5)
 
 class Slider {
-    constructor(id){
+    constructor(id) {
         this.slider = document.querySelector(id)
         this.images = this.slider.querySelectorAll('img');
+        this.circle = this.slider.querySelectorAll(".circle")
         this.currentImage = 0;
 
-        this.showImage(this.currentImage)
+        this.showImage(this.currentImage);
     }
 
-    showImage(index){
+    showImage(index) {
         this.images.forEach((img, i) => {
-            if(i === index){
+            if (i === index) {
                 img.style.display = 'block'
-            }else{
+                this.circle[i].style.backgroundColor = "white"
+            } else {
                 img.style.display = 'none'
+                this.circle[i].style.backgroundColor = "gray"
             }
         })
+
+        setTimeout(() => {
+            this.nextImage()
+        }, 2000)
+
+        this.buttonNext()
+        this.buttonPrev()
+
     }
 
     nextImage() {
         this.currentImage = (this.currentImage + 1) % this.images.length;
         this.showImage(this.currentImage);
     }
+
+    prevImage() {
+        this.currentImage = (this.currentImage - 1) % this.images.length;
+        if (this.currentImage < 0) {
+            this.currentImage = this.images.length-1;
+        }
+        this.showImage(this.currentImage);
+    }
+
+    buttonNext() {
+        btnNext.onclick = () => {
+            this.nextImage(this.currentImage)
+        }
+    }
+    buttonPrev() {
+        btnPrevious.onclick = () => {
+            this.prevImage(this.currentImage)
+        }
+    }
 }
 
-new Slider('slider');
+new Slider('#slider');

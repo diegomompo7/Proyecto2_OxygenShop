@@ -1,0 +1,45 @@
+#slider{
+    width: 80%;
+    margin: 0 auto;
+    background-color: $second-color;
+    max-width: 586px;
+    position: relative;
+    padding-top: 60px;
+    padding-bottom: 10px;
+
+}
+#slider img{
+    display: none;
+}
+.btnSlider{
+    display: flex;
+    position: absolute;
+    bottom: 45%;
+    right: 2%;
+    left: 2%;
+    justify-content: space-between;
+
+
+    & button {
+    background-color: $second-color;
+    color: $eighth-color;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 30px;
+    border: 3px solid $eighth-color;
+    }
+}
+.divCircle {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+
+     & div {
+        width: 10px;
+        height: 10px;
+        background-color: $eighth-color;
+        border-radius: 50%; /* Hace que el elemento sea un círculo */
+        margin: 0 10px; /* Centra el círculo horizontalmente */
+     }
+}
+
