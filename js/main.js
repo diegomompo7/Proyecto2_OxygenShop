@@ -83,7 +83,6 @@ scroll.setAttribute('style', 'border: 3px solid red; position:fixed')
 document.onscroll = () => {
     const height = window.scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
     scroll.width = `${height * 100}%`
-    console.log(height)
 
     if (Math.round(height * 100) >= 25 && !sessionStorage.getItem("Closed")) {
         news.style.visibility = "visible";
@@ -151,14 +150,14 @@ const validForm = () => {
 
             if (validationEvery(input)[0][0]) {
                 input.classList.add("invalid")
-                alert(validationEvery(input, inputMsgVal[i])[0][1])
+                //alert(validationEvery(input, inputMsgVal[i])[0][1])
                 return true;
             } else {
                 input.classList.remove("invalid")
 
                 if (validationEvery(input)[i + 1][0]) {
                     input.classList.add("invalid")
-                    alert(validationEvery(input, inputMsgVal[i])[i + 1][1])
+                    //alert(validationEvery(input, inputMsgVal[i])[i + 1][1])
                     return true
                 } else {
                     input.classList.remove("invalid")
@@ -184,11 +183,11 @@ const inputToSend = inputModal
 btnSusbribe.onclick = () => {
 
     if (inputToSend.value === '') {
-        alert("The email is invalid: It must be complete")
+        // alert("The email is invalid: It must be complete")
     } else if (!inputToSend.value.match(validateEmail)) {
-        alert("The email is invalid: It must an email valid")
+        // alert("The email is invalid: It must an email valid")
     } else {
-        alert("The email is correct: We send you an email")
+        // alert("The email is correct: We send you an email")
         news.style.visibility = "hidden";
         news.style.opacity = "0"
         news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
@@ -217,9 +216,9 @@ const sendDateServer = () => {
     })
         .then((response) => response.json())
         .then((json) => (
-            alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`,
+            /*alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`)*/,
                 console.log(json)
-            )))
+            ))
 
 }
 
