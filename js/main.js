@@ -10,6 +10,7 @@ mobileMenuBtn.onclick = () => {
         mobileMenu.style.display = "none";
     }
 }
+
 //-------------------------------------------------------------------------------------------
 
 //NEWSLETTER
@@ -214,7 +215,7 @@ const sendDateServer = () => {
     })
         .then((response) => response.json())
         .then((json) => (
-            /*alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`)*/,
+            /*alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`)*/
                 console.log(json)
             ))
 
