@@ -15,7 +15,7 @@
     height: 15em;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 1s ease-in, visibility 0.25s 0.25s;
+    transition: opacity 0.5s ease-in, visibility 0.25s 0.25s;
     z-index: 5;
 
     & p {

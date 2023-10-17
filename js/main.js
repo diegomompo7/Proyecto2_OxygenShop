@@ -48,7 +48,6 @@ setTimeout(() => {
     if (!sessionStorage.getItem("Closed")) {
         news.style.visibility = "visible";
         news.style.opacity = "1"
-        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
     }
 }, "5000");
 
@@ -67,7 +66,7 @@ window.onclick = (event) => {
         if (event.target !== news) {
             news.style.visibility = "hidden";
             news.style.opacity = "0"
-            news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+            news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s"
             sessionStorage.setItem('Closed', 'true')
         }
     }
@@ -76,7 +75,7 @@ window.onclick = (event) => {
 btnClosed.onclick = () => {
     news.style.visibility = "hidden";
     news.style.opacity = "0"
-    news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+    news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s"
     sessionStorage.setItem('Closed', 'true')
 }
 
@@ -97,11 +96,11 @@ scroll.setAttribute('style', 'border: 3px solid red; position:fixed')
 document.onscroll = () => {
     const height = window.scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
     scroll.width = `${height * 100}%`
+    console.log(height)
 
-    if (Math.round(height * 100) === 25 && !sessionStorage.getItem("Closed")) {
+    if (Math.round(height * 100) >= 25 && !sessionStorage.getItem("Closed")) {
         news.style.visibility = "visible";
         news.style.opacity = "1"
-        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
     }
 
 }
