@@ -336,6 +336,7 @@ const divSlider = document.createElement("div")
 divSlider.id = "slider"
 
 
+
 const divBtn = document.createElement("div")
 divBtn.classList.add("btnSlider")
 
@@ -355,7 +356,7 @@ document.body.insertBefore(divSlider, document.querySelector(".contact"))
 
 for(let i=1; i<=5; i++){
     const img = document.createElement("img")
-    img.setAttribute("src", `../assets/img/image${i}.jpg`)
+    img.setAttribute("src", `assets/img/image${i}.jpg`)
     divSlider.appendChild(img)
 }
 

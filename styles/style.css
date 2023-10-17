@@ -699,7 +699,6 @@ body {
   background-color: #08A6E4;
   color: #FFFFFF;
   border-radius: 2.5rem;
-  margin-bottom: 15px;
   border-style: none;
 }
 @media screen and (min-width: 62.5rem) {
@@ -1177,48 +1176,61 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Raleway", "Arial", sans-serif;
-  font-size: 2.1875rem;
+  font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  top: 33%;
+  top: 20%;
   left: 15%;
   padding-top: 20%;
-  padding-bottom: 20%;
   position: fixed;
   background-color: #08A6E4;
   color: #FFFFFF;
   width: 70%;
+  height: 15em;
   visibility: hidden;
   opacity: 0;
   transition: opacity 1s ease-in, visibility 0.25s 0.25s;
   z-index: 5;
 }
+.newsletterModal p {
+  margin-bottom: 1.667em;
+}
+@media screen and (min-width: 62.5rem) {
+  .newsletterModal p {
+    margin-bottom: 1.029em;
+  }
+}
 @media screen and (min-width: 27.5rem) {
   .newsletterModal {
-    padding-top: 3.41em;
-    padding-bottom: 3.41em;
+    padding-top: 3.967em;
   }
 }
 @media screen and (min-width: 62.5rem) {
   .newsletterModal {
-    font-size: 3.0625rem;
+    font-size: 3.063rem;
     font-weight: 700;
-    padding-top: 2.44em;
-    padding-bottom: 2.44em;
+    padding-top: 3.306em;
+    height: 9.7em;
   }
 }
 
 .inputSuscribe {
-  margin-top: 50px;
   width: 50%;
   border: none;
   background-color: #08A6E4;
   color: white;
   border-bottom: 1px solid #FFFFFF;
+  margin-bottom: 3.125em;
+}
+@media screen and (min-width: 62.5rem) {
+  .inputSuscribe {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2.083em;
+  }
 }
 
 .btnSuscribe {
-  margin-top: 50px;
   padding: 1.375em 4em;
   box-shadow: 5px 10px 14px 0px rgba(255, 255, 255, 0.29);
   font-family: "Open Sans", "Arial", sans-serif;
@@ -1232,7 +1244,7 @@ body {
 
 .btnClosed {
   position: fixed;
-  top: 35%;
+  top: 23%;
   right: 20%;
   font-family: "Open Sans", "Arial", sans-serif;
   font-size: 2rem;
@@ -1246,10 +1258,11 @@ body {
   width: 80%;
   margin: 0 auto;
   background-color: #000000;
-  max-width: 586px;
+  max-width: 36.625em;
   position: relative;
-  padding-top: 60px;
-  padding-bottom: 10px;
+  margin-top: 3.125em;
+  padding-top: 3.75em;
+  padding-bottom: 0.6em;
 }
 
 #slider img {
@@ -1269,19 +1282,19 @@ body {
   color: #A5A5A5;
   font-size: 1.5rem;
   border-radius: 50%;
-  width: 30px;
+  width: 1.25em;
   border: 3px solid #A5A5A5;
 }
 
 .divCircle {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  padding-top: 3.125em;
 }
 .divCircle div {
-  width: 10px;
-  height: 10px;
+  width: 0.6em;
+  height: 0.6em;
   background-color: #A5A5A5;
   border-radius: 50%; /* Hace que el elemento sea un círculo */
-  margin: 0 10px; /* Centra el círculo horizontalmente */
+  margin: 0 0.6em; /* Centra el círculo horizontalmente */
 }/*# sourceMappingURL=style.css.map */

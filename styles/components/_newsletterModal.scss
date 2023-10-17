@@ -3,46 +3,57 @@
     flex-direction: column;
     align-items: center;
     @include fontFamily($first-font, "Arial", sans-serif);
-    @include fontSize(2.1875rem, 700);
+    @include fontSize(1.5rem, 700);
     text-align: center;
-    top: 33%;
+    top: 20%;
     left: 15%;
     padding-top: 20%;
-    padding-bottom: 20%;
     position:fixed; 
     background-color: $first-color;
     color: $seventh-color;
     width: 70%;
+    height: 15em;
     visibility: hidden;
     opacity: 0;
     transition: opacity 1s ease-in, visibility 0.25s 0.25s;
     z-index: 5;
 
+    & p {
+        margin-bottom: 1.667em;
+
+        @include desktop(){
+            margin-bottom: 1.029em;
+        }
+    }
+
     @include min440(){
-        padding-top: 3.41em;
-        padding-bottom: 3.41em;
+        padding-top: 3.967em;
       }
 
 
     @include desktop(){
-        @include fontSize(3.0625rem, 700);
-        padding-top: 2.44em;
-        padding-bottom: 2.44em;
+        @include fontSize(3.063rem, 700);
+        padding-top: 3.306em;
+        height: 9.7em;
       }
 
 }
 .inputSuscribe{
-    margin-top:50px;
     width: 50%;
     border: none;
     background-color:$first-color;
     color: white;
     border-bottom: 1px solid $seventh-color;
+    margin-bottom: 3.125em;
+
+    @include desktop(){
+        @include fontSize(1.5rem, 400);
+        margin-bottom: 2.083em;
+      }
 }
 
 
 .btnSuscribe {
-    margin-top:50px;
     @include padding(1.375em, 4em);
     @include shadow(5px, 10px, 14px, 0px, rgba(255, 255, 255, 0.29));
     @include fontFamily($second-font, "Arial", sans-serif);
@@ -56,7 +67,7 @@
 }
 .btnClosed {
     position: fixed;
-    top: 35%;
+    top: 23%;
     right: 20%;
     @include fontFamily($second-font, "Arial", sans-serif);
     @include fontSize(2rem, 700);

@@ -2,10 +2,11 @@
     width: 80%;
     margin: 0 auto;
     background-color: $second-color;
-    max-width: 586px;
+    max-width: 36.625em;
     position: relative;
-    padding-top: 60px;
-    padding-bottom: 10px;
+    margin-top: 3.125em;
+    padding-top: 3.75em;
+    padding-bottom: 0.6em;
 
 }
 #slider img{
@@ -25,21 +26,21 @@
     color: $eighth-color;
     font-size: 1.5rem;
     border-radius: 50%;
-    width: 30px;
+    width: 1.25em;
     border: 3px solid $eighth-color;
     }
 }
 .divCircle {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
+    padding-top: 3.125em;
 
      & div {
-        width: 10px;
-        height: 10px;
+        width: 0.6em;
+        height: 0.6em;
         background-color: $eighth-color;
         border-radius: 50%; /* Hace que el elemento sea un círculo */
-        margin: 0 10px; /* Centra el círculo horizontalmente */
+        margin: 0 0.6em; /* Centra el círculo horizontalmente */
      }
 }
 
