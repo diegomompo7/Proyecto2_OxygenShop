@@ -1,6 +1,5 @@
 // CLICK MENU
 
-const mobileMenuNav = document.querySelector(".header__nav")
 const mobileMenuBtn = document.querySelector(".header__nav--svg")
 const mobileMenu = document.querySelector(".header__nav--mobile")
 
@@ -128,7 +127,6 @@ const nameInput = document.querySelector(".contact__form--name--input")
 const emailInput = document.querySelector(".contact__form--email--input")
 const checkboxInput = document.querySelector(".contact__form--checkbox")
 const sendButton = document.querySelector(".contact__form--send")
-let checkInvalid;
 
 const inputToVal = [nameInput, emailInput, checkboxInput]
 const inputMsgVal = ['name', 'email', 'checkbox']
