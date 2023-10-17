@@ -4,25 +4,13 @@ const mobileMenuNav = document.querySelector(".header__nav")
 const mobileMenuBtn = document.querySelector(".header__nav--svg")
 const mobileMenu = document.querySelector(".header__nav--mobile")
 
-
-
-const menuClosed = () => {
-
     mobileMenuBtn.onclick = () => {
-        mobileMenu.style.display = 'none'
-        menuOpen()
+        if (mobileMenu.style.display === "none") {
+            mobileMenu.style.display = "block";
+          } else {
+            mobileMenu.style.display = "none";
+          }
     }
-}
-
-const menuOpen = () => {
-
-    mobileMenuBtn.onclick = () => {
-        mobileMenu.style.display = 'block'
-        menuClosed()
-    }
-}
-
-menuOpen()
 
 //-------------------------------------------------------------------------------------------
 
