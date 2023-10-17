@@ -2,12 +2,14 @@
 
 const mobileMenuBtn = document.querySelector(".header__nav--svg")
 const mobileMenu = document.querySelector(".header__nav--mobile")
+mobileMenu.style.display = "none"
 
 mobileMenuBtn.onclick = () => {
     if (mobileMenu.style.display === "none") {
         mobileMenu.style.display = "block";
     } else {
         mobileMenu.style.display = "none";
+
     }
 }
 
@@ -25,7 +27,7 @@ btnSusbribe.classList.add("btnSuscribe")
 const btnClosed = document.createElement("button")
 btnClosed.classList.add("btnClosed")
 
-btnSusbribe.textContent = "Suscribe"
+btnSusbribe.textContent = "Subscribe"
 btnClosed.textContent = "X"
 
 pModal.textContent = "Subscribe to our newsletter"

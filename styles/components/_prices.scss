@@ -39,6 +39,7 @@
       @include shadow(5px, 10px, 14px, 0px, rgba(7, 172, 230, 0.29));
       @include fontFamily($second-font, "Arial", sans-serif);
       @include fontSize(1rem, 700);
+      margin-bottom: 3.125em;
       background-color: $first-color;
       color: $seventh-color;
       border-radius: 2.5rem;
