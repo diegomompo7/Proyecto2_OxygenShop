@@ -4,14 +4,13 @@ const mobileMenuNav = document.querySelector(".header__nav")
 const mobileMenuBtn = document.querySelector(".header__nav--svg")
 const mobileMenu = document.querySelector(".header__nav--mobile")
 
-    mobileMenuBtn.onclick = () => {
-        if (mobileMenu.style.display === "none") {
-            mobileMenu.style.display = "block";
-          } else {
-            mobileMenu.style.display = "none";
-          }
+mobileMenuBtn.onclick = () => {
+    if (mobileMenu.style.display === "none") {
+        mobileMenu.style.display = "block";
+    } else {
+        mobileMenu.style.display = "none";
     }
-
+}
 //-------------------------------------------------------------------------------------------
 
 //NEWSLETTER
@@ -183,12 +182,12 @@ const validForm = () => {
 const inputToSend = inputModal
 
 btnSusbribe.onclick = () => {
-    
-    if(inputToSend.value === ''){
+
+    if (inputToSend.value === '') {
         alert("The email is invalid: It must be complete")
-    } else if(!inputToSend.value.match(validateEmail)){
-       alert("The email is invalid: It must an email valid")
-    }else{
+    } else if (!inputToSend.value.match(validateEmail)) {
+        alert("The email is invalid: It must an email valid")
+    } else {
         alert("The email is correct: We send you an email")
         news.style.visibility = "hidden";
         news.style.opacity = "0"
@@ -196,7 +195,7 @@ btnSusbribe.onclick = () => {
         sessionStorage.setItem('email', inputToSend.value)
         sessionStorage.setItem('Closed', 'true')
     }
-    
+
 }
 
 
@@ -341,7 +340,7 @@ divCircle.classList.add("divCircle")
 
 document.body.insertBefore(divSlider, document.querySelector(".contact"))
 
-for(let i=1; i<=5; i++){
+for (let i = 1; i <= 5; i++) {
     const img = document.createElement("img")
     img.setAttribute("src", `assets/img/image${i}.jpg`)
     divSlider.appendChild(img)
@@ -352,7 +351,7 @@ divBtn.append(btnPrevious)
 divBtn.append(btnNext)
 divSlider.append(divCircle)
 
-divSlider.querySelectorAll("img").forEach(()=> {
+divSlider.querySelectorAll("img").forEach(() => {
     const circle = document.createElement("div")
     circle.classList.add("circle")
     divCircle.append(circle)
