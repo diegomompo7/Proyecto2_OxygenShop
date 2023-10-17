@@ -24,17 +24,15 @@ const menuOpen = () => {
 
 menuOpen()
 
+//-------------------------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------------------------
-
-// SCROLLBAR AND NEWSLETTER
-
-const scroll = document.createElement("hr")
-scroll.setAttribute('style', 'border: 3px solid red; position:fixed')
+//NEWSLETTER
 
 const news = document.createElement("modal")
 news.classList.add("newsletterModal")
 const pModal = document.createElement("p")
+const inputModal = document.createElement("input")
+inputModal.classList.add("inputSuscribe")
 const btnSusbribe = document.createElement("button")
 btnSusbribe.classList.add("btnSuscribe")
 const btnClosed = document.createElement("button")
@@ -46,25 +44,12 @@ btnClosed.textContent = "X"
 pModal.textContent = "Subscribe to our newsletter"
 
 
-document.onscroll = () => {
-    height = window.scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
-    scroll.width = `${height * 100}%`
-    console.log(height)
-
-    if (Math.round(height * 100) === 25 && !sessionStorage.getItem("Closed")) {
-        news.style.visibility = "visible";
-        news.style.opacity = "1"
-        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
-    }
-
-}
 setTimeout(() => {
     if (!sessionStorage.getItem("Closed")) {
         news.style.visibility = "visible";
         news.style.opacity = "1"
         news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
     }
-    console.log("hola")
 }, "5000");
 
 
@@ -77,11 +62,14 @@ document.onkeydown = (event) => {
     }
 }
 window.onclick = (event) => {
-    if (event.target !== news) {
-        news.style.visibility = "hidden";
-        news.style.opacity = "0"
-        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
-        sessionStorage.setItem('Closed', 'true')
+
+    if (event.target.parentNode !== news) {
+        if (event.target !== news) {
+            news.style.visibility = "hidden";
+            news.style.opacity = "0"
+            news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+            sessionStorage.setItem('Closed', 'true')
+        }
     }
 }
 
@@ -93,11 +81,32 @@ btnClosed.onclick = () => {
 }
 
 
-document.body.insertBefore(scroll, document.querySelector(".header"))
 document.body.insertBefore(news, document.querySelector(".header"))
 news.append(btnClosed)
 news.append(pModal)
+news.append(inputModal)
 news.append(btnSusbribe)
+
+// ------------------------------------------------------------------------------------------
+
+// SCROLLBAR
+
+const scroll = document.createElement("hr")
+scroll.setAttribute('style', 'border: 3px solid red; position:fixed')
+
+document.onscroll = () => {
+    const height = window.scrollY / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+    scroll.width = `${height * 100}%`
+
+    if (Math.round(height * 100) === 25 && !sessionStorage.getItem("Closed")) {
+        news.style.visibility = "visible";
+        news.style.opacity = "1"
+        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+    }
+
+}
+
+document.body.insertBefore(scroll, document.querySelector(".header"))
 
 
 
@@ -136,10 +145,10 @@ const checkboxInput = document.querySelector(".contact__form--checkbox")
 const sendButton = document.querySelector(".contact__form--send")
 let checkInvalid;
 
-const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
 const inputToVal = [nameInput, emailInput, checkboxInput]
 const inputMsgVal = ['name', 'email', 'checkbox']
+
+const validateEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
 const validationEvery = (input, inputMsg) => [
     [input.value === '', `The ${inputMsg} is invalid: It must be complete`],
@@ -174,11 +183,37 @@ const validForm = () => {
 
     })
 
-    console.log(checkVal)
     let isValid = checkVal.every((check) => check === false)
 
     return isValid
 }
+
+//----------------------------------------------------------------------------------------------
+
+
+// SEND EMAIL NEWSLETTER
+
+const inputToSend = inputModal
+
+btnSusbribe.onclick = () => {
+    
+    if(inputToSend.value === ''){
+        alert("The email is invalid: It must be complete")
+    } else if(!inputToSend.value.match(validateEmail)){
+       alert("The email is invalid: It must an email valid")
+    }else{
+        alert("The email is correct: We send you an email")
+        news.style.visibility = "hidden";
+        news.style.opacity = "0"
+        news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s"
+        sessionStorage.setItem('email', inputToSend.value)
+        sessionStorage.setItem('Closed', 'true')
+    }
+    
+}
+
+
+//-------------------------------------------------------------------------------------------------
 
 // SEND DATE TO SERVER
 
@@ -206,12 +241,10 @@ sendButton.onclick = (e) => {
     e.preventDefault()
 
     if (validForm()) {
-        console.log(false)
         sendDateServer()
 
     } else {
         e.preventDefault()
-        console.log(true)
     }
 }
 
@@ -232,7 +265,6 @@ currCurrencyArr.push(currCurrencyPremium.textContent.split(currCurrencyArr[0])[1
 
 let currCurrencyConverted = []
 
-console.log(currCurrencyArr)
 
 const currSelector = [
     ["eur", "Euro", "€"],
@@ -283,14 +315,11 @@ const currConverted = (data, currConvertArr) => {
 }
 
 btnSelector.onclick = () => {
-    console.log(currCurrencyArr)
-    console.log(selector.value)
     const currConvert = currSelector.filter(value => value[1] === selector.value)
     const currConvertAct = currSelector.filter(value => value[2] === currCurrencyArr[0])
 
     currConvert.push(currConvertAct[0])
 
-    console.log(currConvert)
 
     fetch(urlConverter + currConvert[1][0] + "/" + currConvert[0][0] + ".json")
         .then(response => response.json())
@@ -318,48 +347,28 @@ const btnNext = document.createElement("button")
 btnNext.classList.add("btnNext")
 btnNext.textContent = ">"
 
-const img1 = document.createElement("img")
-const img2 = document.createElement("img")
-const img3 = document.createElement("img")
-const img4 = document.createElement("img")
-const img5 = document.createElement("img")
-
 const divCircle = document.createElement("div")
-const divC1 = document.createElement("div")
-const divC2 = document.createElement("div")
-const divC3 = document.createElement("div")
-const divC4 = document.createElement("div")
-const divC5 = document.createElement("div")
-
-divC1.classList.add("circle")
-divC2.classList.add("circle")
-divC3.classList.add("circle")
-divC4.classList.add("circle")
-divC5.classList.add("circle")
 
 divCircle.classList.add("divCircle")
 
-img1.setAttribute("src", "../assets/img/image1.jpg")
-img2.setAttribute("src", "../assets/img/image2.jpg")
-img3.setAttribute("src", "../assets/img/image3.jpg")
-img4.setAttribute("src", "../assets/img/image4.jpg")
-img5.setAttribute("src", "../assets/img/image5.jpg")
-
 document.body.insertBefore(divSlider, document.querySelector(".contact"))
-divSlider.append(img1)
-divSlider.append(img2)
-divSlider.append(img3)
-divSlider.append(img4)
-divSlider.append(img5)
+
+for(let i=1; i<=5; i++){
+    const img = document.createElement("img")
+    img.setAttribute("src", `../assets/img/image${i}.jpg`)
+    divSlider.appendChild(img)
+}
+
 divSlider.appendChild(divBtn)
 divBtn.append(btnPrevious)
 divBtn.append(btnNext)
 divSlider.append(divCircle)
-divCircle.append(divC1)
-divCircle.append(divC2)
-divCircle.append(divC3)
-divCircle.append(divC4)
-divCircle.append(divC5)
+
+divSlider.querySelectorAll("img").forEach(()=> {
+    const circle = document.createElement("div")
+    circle.classList.add("circle")
+    divCircle.append(circle)
+})
 
 class Slider {
     constructor(id) {
@@ -382,11 +391,12 @@ class Slider {
             }
         })
 
-        setTimeout(() => {
-            this.nextImage()
+        const autoImage = setTimeout(() => {
+            this.nextImage(this.currentImage)
         }, 2000)
 
-        this.buttonNext()
+
+        this.buttonNext(autoImage)
         this.buttonPrev()
 
     }
@@ -394,18 +404,21 @@ class Slider {
     nextImage() {
         this.currentImage = (this.currentImage + 1) % this.images.length;
         this.showImage(this.currentImage);
+
+
     }
 
     prevImage() {
         this.currentImage = (this.currentImage - 1) % this.images.length;
         if (this.currentImage < 0) {
-            this.currentImage = this.images.length-1;
+            this.currentImage = this.images.length - 1;
         }
         this.showImage(this.currentImage);
     }
 
-    buttonNext() {
+    buttonNext(autoImage) {
         btnNext.onclick = () => {
+            clearTimeout(autoImage)
             this.nextImage(this.currentImage)
         }
     }

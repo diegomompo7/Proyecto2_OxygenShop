@@ -1173,7 +1173,9 @@ body {
 }
 
 .newsletterModal {
+  display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: "Raleway", "Arial", sans-serif;
   font-size: 2.1875rem;
   font-weight: 700;
@@ -1204,6 +1206,15 @@ body {
     padding-top: 2.44em;
     padding-bottom: 2.44em;
   }
+}
+
+.inputSuscribe {
+  margin-top: 50px;
+  width: 50%;
+  border: none;
+  background-color: #08A6E4;
+  color: white;
+  border-bottom: 1px solid #FFFFFF;
 }
 
 .btnSuscribe {

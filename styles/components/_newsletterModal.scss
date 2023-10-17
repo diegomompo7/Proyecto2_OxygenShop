@@ -1,5 +1,7 @@
 .newsletterModal{
+    display: flex;
     flex-direction: column;
+    align-items: center;
     @include fontFamily($first-font, "Arial", sans-serif);
     @include fontSize(2.1875rem, 700);
     text-align: center;
@@ -29,6 +31,16 @@
       }
 
 }
+.inputSuscribe{
+    margin-top:50px;
+    width: 50%;
+    border: none;
+    background-color:$first-color;
+    color: white;
+    border-bottom: 1px solid $seventh-color;
+}
+
+
 .btnSuscribe {
     margin-top:50px;
     @include padding(1.375em, 4em);
@@ -39,6 +51,8 @@
     color: $first-color;
     border-radius: 2.5rem;
     border-style: none;
+
+
 }
 .btnClosed {
     position: fixed;
