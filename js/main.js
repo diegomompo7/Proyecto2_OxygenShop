@@ -106,10 +106,10 @@ document.body.insertBefore(scrollContainer, document.querySelector(".footer"));
 scrollContainer.append(scrollUp);
 
 scrollUp.onclick = () => {
-  let toTop = window.setInterval(() => {
+  let toTop = window.setTimeout(() => {
     let pos = window.scrollY;
     if (pos > 0) {
-      scrollTo(0, pos - 100);
+      scrollTo({top: 0,  behavior:"smooth"});
     } else {
       window.clearInterval(toTop);
     }
