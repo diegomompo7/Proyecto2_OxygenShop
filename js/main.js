@@ -19,6 +19,8 @@ mobileMenuBtn.onclick = () => {
 const news = document.createElement("modal");
 news.classList.add("newsletterModal");
 const pModal = document.createElement("p");
+const formModal = document.createElement("form")
+news.classList.add("formSubscribe");
 const inputModal = document.createElement("input");
 inputModal.classList.add("inputSuscribe");
 const btnSusbribe = document.createElement("button");
@@ -47,12 +49,14 @@ document.onkeydown = (event) => {
   }
 };
 window.onclick = (event) => {
-  if (event.target.parentNode !== news) {
-    if (event.target !== news) {
-      news.style.visibility = "hidden";
-      news.style.opacity = "0";
-      news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
-      sessionStorage.setItem("Closed", "true");
+  if (event.target.parentNode !== form) {
+    if (event.target.parentNode !== news) {
+      if (event.target !== news) {
+        news.style.visibility = "hidden";
+        news.style.opacity = "0";
+        news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
+        sessionStorage.setItem("Closed", "true");
+      }
     }
   }
 };
@@ -67,22 +71,29 @@ btnClosed.onclick = () => {
 document.body.insertBefore(news, document.querySelector(".header"));
 news.append(btnClosed);
 news.append(pModal);
-news.append(inputModal);
-news.append(btnSusbribe);
+news.append(formModal)
+formModal.append(inputModal);
+formModal.append(btnSusbribe);
 
 // ------------------------------------------------------------------------------------------
 
 // SCROLLBAR
 
 const scroll = document.createElement("hr");
-scroll.setAttribute("style", "border: 3px solid red; position:fixed");
+scroll.setAttribute("style", "border: 3px solid red; position:fixed; display:none;");
 
 document.onscroll = () => {
   const height =
     window.scrollY /
     (document.documentElement.scrollHeight -
       document.documentElement.clientHeight);
-  scroll.width = `${height * 100}%`;
+
+  if (height != 0) {
+    scroll.style.display = 'block'
+    scroll.width = `${height * 100}%`;
+  } else {
+    scroll.style.display = 'none'
+  }
 
   if (Math.round(height * 100) >= 25 && !sessionStorage.getItem("Closed")) {
     news.style.visibility = "visible";
@@ -109,7 +120,7 @@ scrollUp.onclick = () => {
   let toTop = window.setTimeout(() => {
     let pos = window.scrollY;
     if (pos > 0) {
-      scrollTo({top: 0,  behavior:"smooth"});
+      scrollTo({ top: 0, behavior: "smooth" });
     } else {
       window.clearInterval(toTop);
     }
@@ -177,13 +188,17 @@ const validForm = () => {
 
 const inputToSend = inputModal;
 
-btnSusbribe.onclick = () => {
+btnSusbribe.onclick = (e) => {
+  e.preventDefault()
   if (inputToSend.value === "") {
+    inputToSend.classList.add("invalid");
     // alert("The email is invalid: It must be complete")
   } else if (!inputToSend.value.match(validateEmail)) {
     // alert("The email is invalid: It must an email valid")
+    inputToSend.classList.add("invalid");
   } else {
     // alert("The email is correct: We send you an email")
+    inputToSend.classList.remove("invalid");
     news.style.visibility = "hidden";
     news.style.opacity = "0";
     news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s";
@@ -245,6 +260,7 @@ currCurrencyArr.push(
 let currCurrencyConverted = [];
 
 const currSelector = [
+  ["", "Selecciona una moneda", ""],
   ["eur", "Euro", "€"],
   ["usd", "Dollar", "$"],
   ["gbp", "Pound", "£"],
@@ -257,11 +273,8 @@ const divSelect = document.createElement("div");
 divSelect.classList.add("prices__container");
 const selector = document.createElement("select");
 selector.classList.add("prices__container--selector");
-const btnSelector = document.createElement("button");
-btnSelector.classList.add("prices__container--btnSelector");
 
 pSelector.textContent = "Currency to Converter";
-btnSelector.textContent = "Convert";
 
 for (let i = 0; i < currSelector.length; i++) {
   const option = document.createElement("option");
@@ -272,7 +285,6 @@ for (let i = 0; i < currSelector.length; i++) {
 pricesContainer.insertBefore(pSelector, pricesPlans);
 pricesContainer.insertBefore(divSelect, pricesPlans);
 divSelect.append(selector);
-divSelect.append(btnSelector);
 
 const currConverted = (data, currConvertArr) => {
   currCurrencyConverted.push(currConvertArr[0][2]);
@@ -297,21 +309,34 @@ const currConverted = (data, currConvertArr) => {
   currCurrencyConverted = [];
 };
 
-btnSelector.onclick = () => {
-  const currConvert = currSelector.filter(
-    (value) => value[1] === selector.value
-  );
-  const currConvertAct = currSelector.filter(
-    (value) => value[2] === currCurrencyArr[0]
-  );
+selector.onclick = () => {
 
-  currConvert.push(currConvertAct[0]);
+  if (selector.value !== currSelector[0][1]) {
 
-  fetch(urlConverter + currConvert[1][0] + "/" + currConvert[0][0] + ".json")
-    .then((response) => response.json())
-    .then((json) => {
-      currConverted(json, currConvert);
-    });
+    const currConvert = currSelector.filter(
+      (value) => value[1] === selector.value
+    );
+    const currConvertAct = currSelector.filter(
+      (value) => value[2] === currCurrencyArr[0]
+    );
+
+    currConvert.push(currConvertAct[0]);
+
+    fetch(urlConverter + currConvert[1][0] + "/" + currConvert[0][0] + ".json")
+      .then((response) => {
+        if (response.ok) {
+          if (response.status == 200) {
+            response.json().then((json) => {
+              currConverted(json, currConvert);
+            })
+          }
+        }
+      }).catch((error) => {
+        throw (console.error("Error en la petición"))
+      })
+  } else {
+    console.error("Seleccione una moneda");
+  }
 };
 
 //-------------------------------------------------------------------------------------------------------------------------------ç

@@ -1157,7 +1157,8 @@ body {
 
 .btn {
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  margin-right: 1.25rem;
   margin-top: 3.125em;
 }
 .btn__return {
@@ -1209,9 +1210,15 @@ body {
   .newsletterModal {
     font-size: 3.063rem;
     font-weight: 700;
-    padding-top: 3.306em;
-    height: 9.7em;
+    padding-top: 2.306em;
+    height: 9.2em;
   }
+}
+
+.formSubscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inputSuscribe {
@@ -1227,6 +1234,7 @@ body {
     font-size: 1.5rem;
     font-weight: 400;
     margin-bottom: 2.083em;
+    width: 80%;
   }
 }
 
@@ -1252,6 +1260,10 @@ body {
   color: #FFFFFF;
   background-color: #08A6E4;
   border-style: none;
+}
+
+.invalid {
+  border-bottom: 1px solid red;
 }
 
 #slider {
