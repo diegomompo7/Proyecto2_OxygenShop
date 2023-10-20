@@ -152,7 +152,7 @@ const validationEvery = (input, inputMsg) => [
     !input.value.match(validateEmail),
     `The ${inputMsg} is invalid: It must an email valid`,
   ],
-  [!input.checked, `The ${inputMsg} is invalid: It must be cheked`],
+  [!input.checked, `The ${inputMsg} is invalid: It must be checked`],
 ];
 
 const validForm = () => {
