@@ -75,14 +75,22 @@ news.append(btnSusbribe);
 // SCROLLBAR
 
 const scroll = document.createElement("hr");
-scroll.setAttribute("style", "border: 3px solid red; position:fixed");
+scroll.setAttribute("style", "border: 3px solid red; position:fixed; display:none;");
 
 document.onscroll = () => {
   const height =
     window.scrollY /
     (document.documentElement.scrollHeight -
       document.documentElement.clientHeight);
-  scroll.width = `${height * 100}%`;
+
+      console.log(height * 100)
+
+      if( height !=0){
+        scroll.style.display = 'block'
+        scroll.width = `${height * 100}%`;
+      }else{
+        scroll.style.display = 'none'
+      }
 
   if (Math.round(height * 100) >= 25 && !sessionStorage.getItem("Closed")) {
     news.style.visibility = "visible";
