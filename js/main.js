@@ -302,7 +302,7 @@ const currConverted = (data, currConvertArr) => {
 
 selector.onclick = () => {
 
-  if (selector.value != currSelector[0][1]) {
+  if (selector.value !== currSelector[0][1]) {
 
     const currConvert = currSelector.filter(
       (value) => value[1] === selector.value
@@ -316,14 +316,14 @@ selector.onclick = () => {
     fetch(urlConverter + currConvert[1][0] + "/" + currConvert[0][0] + ".json")
       .then((response) => {
         if (response.ok) {
-          if (response.status == 201) {
+          if (response.status == 200) {
             response.json().then((json) => {
               currConverted(json, currConvert);
             })
           }
         }
       }).catch((error) => {
-        throw (console.error("Error en la query"))
+        throw (console.error("Error en la petición"))
       })
   } else {
     console.error("Seleccione una moneda");
