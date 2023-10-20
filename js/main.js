@@ -160,14 +160,14 @@ const validForm = () => {
     for (let j = 1; j < validationEvery.length; j++) {
       if (validationEvery(input)[0][0]) {
         input.classList.add("invalid");
-        //alert(validationEvery(input, inputMsgVal[i])[0][1])
+        alert(validationEvery(input, inputMsgVal[i])[0][1])
         return true;
       } else {
         input.classList.remove("invalid");
 
         if (validationEvery(input)[i + 1][0]) {
           input.classList.add("invalid");
-          //alert(validationEvery(input, inputMsgVal[i])[i + 1][1])
+          alert(validationEvery(input, inputMsgVal[i])[i + 1][1])
           return true;
         } else {
           input.classList.remove("invalid");
@@ -192,12 +192,12 @@ btnSusbribe.onclick = (e) => {
   e.preventDefault()
   if (inputToSend.value === "") {
     inputToSend.classList.add("invalid");
-    // alert("The email is invalid: It must be complete")
+    alert("The email is invalid: It must be complete")
   } else if (!inputToSend.value.match(validateEmail)) {
-    // alert("The email is invalid: It must an email valid")
+    alert("The email is invalid: It must an email valid")
     inputToSend.classList.add("invalid");
   } else {
-    // alert("The email is correct: We send you an email")
+    alert("The email is correct: We send you an email")
     inputToSend.classList.remove("invalid");
     news.style.visibility = "hidden";
     news.style.opacity = "0";
@@ -223,9 +223,10 @@ const sendDateServer = () => {
     },
   })
     .then((response) => response.json())
-    .then((json) =>
-      /*alert(`Send form contact success with the id ${json.id},  the name ${json.name} and the email ${json.email}`)*/
+    .then((json) => {
+      alert(`Send form contact successful`)
       console.log(json)
+    }
     );
 };
 
