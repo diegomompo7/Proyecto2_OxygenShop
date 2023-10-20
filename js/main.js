@@ -19,6 +19,8 @@ mobileMenuBtn.onclick = () => {
 const news = document.createElement("modal");
 news.classList.add("newsletterModal");
 const pModal = document.createElement("p");
+const formModal = document.createElement("form")
+news.classList.add("formSubscribe");
 const inputModal = document.createElement("input");
 inputModal.classList.add("inputSuscribe");
 const btnSusbribe = document.createElement("button");
@@ -47,12 +49,14 @@ document.onkeydown = (event) => {
   }
 };
 window.onclick = (event) => {
-  if (event.target.parentNode !== news) {
-    if (event.target !== news) {
-      news.style.visibility = "hidden";
-      news.style.opacity = "0";
-      news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
-      sessionStorage.setItem("Closed", "true");
+  if (event.target.parentNode !== form) {
+    if (event.target.parentNode !== news) {
+      if (event.target !== news) {
+        news.style.visibility = "hidden";
+        news.style.opacity = "0";
+        news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
+        sessionStorage.setItem("Closed", "true");
+      }
     }
   }
 };
@@ -67,8 +71,9 @@ btnClosed.onclick = () => {
 document.body.insertBefore(news, document.querySelector(".header"));
 news.append(btnClosed);
 news.append(pModal);
-news.append(inputModal);
-news.append(btnSusbribe);
+news.append(formModal)
+formModal.append(inputModal);
+formModal.append(btnSusbribe);
 
 // ------------------------------------------------------------------------------------------
 
@@ -183,13 +188,17 @@ const validForm = () => {
 
 const inputToSend = inputModal;
 
-btnSusbribe.onclick = () => {
+btnSusbribe.onclick = (e) => {
+  e.preventDefault()
   if (inputToSend.value === "") {
+    inputToSend.classList.add("invalid");
     // alert("The email is invalid: It must be complete")
   } else if (!inputToSend.value.match(validateEmail)) {
     // alert("The email is invalid: It must an email valid")
+    inputToSend.classList.add("invalid");
   } else {
     // alert("The email is correct: We send you an email")
+    inputToSend.classList.remove("invalid");
     news.style.visibility = "hidden";
     news.style.opacity = "0";
     news.style.transition = "opacity 1s ease-in, visibility 0.25s 0.25s";

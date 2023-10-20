@@ -33,10 +33,15 @@
 
     @include desktop(){
         @include fontSize(3.063rem, 700);
-        padding-top: 3.306em;
-        height: 9.7em;
+        padding-top: 2.306em;
+        height: 9.2em;
       }
 
+}
+.formSubscribe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .inputSuscribe{
     width: 50%;
@@ -49,6 +54,7 @@
     @include desktop(){
         @include fontSize(1.5rem, 400);
         margin-bottom: 2.083em;
+        width: 80%;
       }
 }
 
@@ -75,3 +81,6 @@
     background-color: $first-color;
     border-style: none;
 }
+.invalid{
+    border-bottom: 1px solid red;
+  }   
