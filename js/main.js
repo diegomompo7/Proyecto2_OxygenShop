@@ -49,13 +49,15 @@ document.onkeydown = (event) => {
   }
 };
 window.onclick = (event) => {
-  if (event.target.parentNode !== form) {
-    if (event.target.parentNode !== news) {
-      if (event.target !== news) {
-        news.style.visibility = "hidden";
-        news.style.opacity = "0";
-        news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
-        sessionStorage.setItem("Closed", "true");
+  if (formModal) {
+    if (event.target.parentNode !== formModal) {
+      if (event.target.parentNode !== news) {
+        if (event.target !== news) {
+          news.style.visibility = "hidden";
+          news.style.opacity = "0";
+          news.style.transition = "opacity 0.5s ease-in, visibility 0.25s 0.25s";
+          sessionStorage.setItem("Closed", "true");
+        }
       }
     }
   }
@@ -126,6 +128,9 @@ scrollUp.onclick = () => {
     }
   }, 200);
 };
+
+// ----------------------------------------------------------------------------------------------------
+
 
 //-----------------------------------------------------------------------------------------------------
 
@@ -375,9 +380,10 @@ divBtn.append(btnPrevious);
 divBtn.append(btnNext);
 divSlider.append(divCircle);
 
-divSlider.querySelectorAll("img").forEach(() => {
+divSlider.querySelectorAll("img").forEach((elem, i, arr) => {
   const circle = document.createElement("div");
   circle.classList.add("circle");
+  circle.id = `${i}`
   divCircle.append(circle);
 });
 
@@ -386,6 +392,7 @@ class Slider {
     this.slider = document.querySelector(id);
     this.images = this.slider.querySelectorAll("img");
     this.circle = this.slider.querySelectorAll(".circle");
+
     this.currentImage = 0;
 
     this.showImage(this.currentImage);
@@ -406,8 +413,22 @@ class Slider {
       this.nextImage(this.currentImage);
     }, 2000);
 
+    this.selectCircle(this.images, autoImage)
     this.buttonNext(autoImage);
     this.buttonPrev();
+  }
+
+  selectCircle(images, autoImage) {
+    window.onclick = event => {
+      clearTimeout(autoImage);
+      for(let i=0; i<images.length; i++){
+        console.log(event.target.id, i)
+        if(event.target.id == i){
+          this.currentImage = i
+          this.showImage(this.currentImage)
+        }
+      }
+    }
   }
 
   nextImage() {
