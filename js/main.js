@@ -421,11 +421,12 @@ class Slider {
   selectCircle(images, autoImage) {
     window.onclick = event => {
       clearTimeout(autoImage);
-      for(let i=0; i<images.length; i++){
-        console.log(event.target.id, i)
-        if(event.target.id == i){
-          this.currentImage = i
-          this.showImage(this.currentImage)
+      if (event.target.className === 'circle') {
+        for (let i = 0; i < images.length; i++) {
+          if (event.target.id == i) {
+            this.currentImage = i
+            this.showImage(this.currentImage)
+          }
         }
       }
     }
