@@ -79,6 +79,30 @@ formModal.append(btnSusbribe);
 
 // ------------------------------------------------------------------------------------------
 
+// BUTTON RETURN TO THE TOP
+
+const scrollContainer = document.createElement("div");
+const scrollUp = document.createElement("button");
+scrollContainer.classList.add("btn");
+scrollUp.classList.add("btn__return");
+scrollUp.textContent = "Return to the top";
+
+document.body.insertBefore(scrollContainer, document.querySelector(".header"));
+scrollContainer.append(scrollUp);
+
+scrollUp.onclick = () => {
+  let toTop = window.setTimeout(() => {
+    let pos = window.scrollY;
+
+    if (pos > 0) {
+      scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.clearInterval(toTop);
+    }
+  }, 200);
+};
+
+// ----------------------------------------------------------------------------------------------------
 // SCROLLBAR
 
 const scroll = document.createElement("hr");
@@ -92,9 +116,11 @@ document.onscroll = () => {
 
   if (height != 0) {
     scroll.style.display = 'block'
+    scrollUp.style.display = 'block'
     scroll.width = `${height * 100}%`;
   } else {
     scroll.style.display = 'none'
+    scrollUp.style.display = 'none'
   }
 
   if (Math.round(height * 100) >= 25 && !sessionStorage.getItem("Closed")) {
@@ -106,31 +132,6 @@ document.onscroll = () => {
 document.body.insertBefore(scroll, document.querySelector(".header"));
 
 //-------------------------------------------------------------------------------------------------
-
-// BUTTON RETURN TO THE TOP
-
-const scrollContainer = document.createElement("div");
-const scrollUp = document.createElement("button");
-scrollContainer.classList.add("btn");
-scrollUp.classList.add("btn__return");
-scrollUp.textContent = "Return to the top";
-
-document.body.insertBefore(scrollContainer, document.querySelector(".footer"));
-scrollContainer.append(scrollUp);
-
-scrollUp.onclick = () => {
-  let toTop = window.setTimeout(() => {
-    let pos = window.scrollY;
-    if (pos > 0) {
-      scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      window.clearInterval(toTop);
-    }
-  }, 200);
-};
-
-// ----------------------------------------------------------------------------------------------------
-
 
 //-----------------------------------------------------------------------------------------------------
 

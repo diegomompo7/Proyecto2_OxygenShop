@@ -3,10 +3,9 @@
 @import "../utilities/mixins";
 
 .btn {
-   display: flex;
-   justify-content: right;
-   margin-right: 1.25rem;
-   margin-top: 3.125em;
+   position: fixed;
+   right: 1%;
+   bottom: 13%;
 
     &__return {
     @include fontSize(1rem, 700);
