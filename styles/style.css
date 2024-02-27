@@ -204,6 +204,9 @@ body {
   border-radius: 2.5rem;
   border-style: none;
 }
+.main__container--button:hover {
+  font-size: 1.5rem;
+}
 .main__img {
   font-size: 0.875rem;
   margin-top: 1.57em;
@@ -1156,10 +1159,9 @@ body {
 }
 
 .btn {
-  display: flex;
-  justify-content: right;
-  margin-right: 1.25rem;
-  margin-top: 3.125em;
+  position: fixed;
+  right: 1%;
+  bottom: 13%;
 }
 .btn__return {
   font-size: 1rem;
